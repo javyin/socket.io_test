@@ -13,12 +13,15 @@
         var socket = io()
 
         document.getElementById('btn').addEventListener('click', function() {
+            // 获取输入框数据
             let val = document.getElementById('msg').value
+            // 把信息发送给服务端
             socket.emit('chatEvent', val)
             document.getElementById('msg').value = ''
         })
 
         socket.on('ServerMsg', function(msg) {
+            // 监听服务端发送的消息
             console.log(msg)
         })
     </script>
