@@ -11,7 +11,10 @@ io.on('connection', (socket)=>{
     console.log('a socket is connected')
     socket.on('chatEvent', function(msg) {
         console.log(`${msg} from client`)
-        socket.send(`server says: ${msg}`)
+        // 用send只是让服务器回复消息
+        // socket.send(`server says: ${msg}`)
+        // 要广播出去，就用broadcast
+        socket.broadcast.emit('ServerMsg', msg)
     })
 })
 
